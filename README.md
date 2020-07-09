@@ -35,8 +35,20 @@ Commands:
 
 ## Docker
 
-This is also avaible as a minimalistic docker container [ludeeus/webhook
+This is also avaible as a minimalistic docker container (> 4MB) [ludeeus/webhook
 ](https://hub.docker.com/r/ludeeus/webhook)
+
+To get started just run:
+
+```bash
+docker run ludeeus/webhook
+```
+
+Full example:
+
+```bash
+docker run ludeeus/webhook send --url "https://discordapp.com/api/webhooks/xxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx" --message "Test message with webhook notifier" --title "Powered by V"
+```
 
 ## License
 
