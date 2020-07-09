@@ -18,6 +18,7 @@ jobs:
       uses: nocturlab/setup-vlang-action@v1
       with:
         v-version: latest
+      id: v
 
     - name: Build
       run: v -prod .
