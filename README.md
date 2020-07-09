@@ -5,7 +5,7 @@
 ## Purpose
 
 - Try out something with [V](https://github.com/vlang/v)
-- Get a smal binary I can use in github actions in other projects
+- Get a small binary I can use in github actions in other projects
 
 ## Installation
 
@@ -35,7 +35,7 @@ Commands:
 
 ## Docker
 
-This is also avaible as a minimalistic docker container (> 4MB) [ludeeus/webhook
+This is also available as a minimalistic docker container (> 4MB) [ludeeus/webhook
 ](https://hub.docker.com/r/ludeeus/webhook)
 
 To get started just run:
