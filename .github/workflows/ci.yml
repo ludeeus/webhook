@@ -13,19 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Binary
     steps:
-    - name: Checkout V
-      uses: actions/checkout@v2
+
+    - name: Set up V version latest
+      uses: nocturlab/setup-vlang-action@v1
       with:
-        repository: vlang/v
-        path: /tmp/v
+        v-version: latest
 
-    - name: Build V
-      run: |
-        cd /tmp/v
-        make
-        sudo ./v symlink
-
-    - name: Run binary
+    - name: Build
       run: v -prod .
 
   docker:
@@ -37,7 +31,7 @@ jobs:
 
     - name: Build
       run: |
-        docker build . -tag action/webhook:action
+        docker build -tag action/webhook:action .
 
     - name: Run
       run: |
