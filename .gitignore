@@ -12,3 +12,5 @@
 *.bak
 a.out
 .noprefix.vrepl_temp*
+binary
+webhook

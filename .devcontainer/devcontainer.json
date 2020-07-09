@@ -1,0 +1,15 @@
+{
+    "name": "webhook",
+    "image": "thevlang/vlang:buster",
+    "postCreateCommand": "apt update && apt install -y build-essentials",
+    "context": "..",
+    "settings": {
+      "files.eol": "\n",
+      "editor.tabSize": 2,
+      "terminal.integrated.shell.linux": "/bin/bash",
+      "files.trimTrailingWhitespace": true
+    },
+    "extensions": [
+        "0x9ef.vscode-vlang"
+    ]
+}

@@ -1,33 +1,38 @@
-# V Repo Template
+# Webhook notifier
 
-Template for [V](https://github.com/vlang/v) Repos
-
-![CI](https://github.com/v-community/repo_template/workflows/CI/badge.svg?branch=master)
-![GitHub Release](https://img.shields.io/github/release/v-community/repo_template.svg)
+[V](https://github.com/vlang/v) powered CLI Webhook notifier
 
 ## Purpose
 
-This repo template tries to solve the complexity behind creating V repos as many people don't how to make one or people are lazy.
-
-## Overview
-
-- `Makefile` for formatting files, running examples and tests
-- GitHub Actions workflow for V
-- `v.mod` A file for initalising V projects
-- `MIT` License for Repo (though you can change the license)
-- A `.gitignore` made for V
-- `ISSUE_TEMPLATE`, `CODE_OF_CONDUCT` etc written
-- More things coming soon...
+- Try out something with [V](https://github.com/vlang/v)
+- Get a smal binary I can use in github actions in other projects
 
 ## Installation
 
 ```bash
-git clone https://github.com/v-community/repo_template
+git clone https://github.com/ludeeus/webhook
+v -prod . -o webhook-notifier
+./webhook-notifier
 ```
 
-## Acknowledgments
+## Usage
 
-Thanks to [moul/golang-template](https://github.com/moul/golang-repo-template) for his `ISSUE_TEMPLATE` and other things written by him and inspiration.
+```bash
+Usage: Webhook notifier [FLAGS] [COMMANDS]
+
+V powered CLI Webhook notifier
+
+Flags:
+  -h  --help          Prints help information
+  -v  --version       Prints version information
+
+Commands:
+  help                Prints help information
+  send                Send a message to a target with a webhook
+  version             Prints version information
+
+```
+
 ## License
 
 Licensed under [MIT](LICENSE)
