@@ -33,6 +33,11 @@ Commands:
 
 ```
 
+## Docker
+
+This is also avaible as a minimalistic docker container [ludeeus/webhook
+](https://hub.docker.com/r/ludeeus/webhook)
+
 ## License
 
 Licensed under [MIT](LICENSE)
