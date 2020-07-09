@@ -35,7 +35,9 @@ jobs:
       id: v
 
     - name: Build
-      run: v -prod .
+      run: |
+        v -prod . -o binary
+        ./binary
 
   docker:
     runs-on: ubuntu-latest
