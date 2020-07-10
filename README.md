@@ -33,6 +33,11 @@ Commands:
 
 ```
 
+## Supported targets
+
+- Discord (default)
+- Microsoft Teams
+
 ## Docker
 
 This is also available as a minimalistic docker container (> 4MB) [ludeeus/webhook

@@ -5,7 +5,7 @@ import os
 import target
 
 const (
-	implemented = ['discord']
+	implemented = ['discord', 'teams']
 	version     = 'MASTER'
 )
 
@@ -47,7 +47,7 @@ fn main() {
 	send_cli.add_flag(cli.Flag{
 		flag: .string
 		value: 'discord'
-		name: 'notifier'
+		name: 'target'
 		description: 'The type of target (defaults to "discord")'
 	})
 	cmd.add_command(send_cli)
@@ -64,7 +64,7 @@ fn send(cmd cli.Command) {
 	username := cmd.flags.get_string('username') or {
 		panic('')
 	}
-	notifier := cmd.flags.get_string('notifier') or {
+	notifier := cmd.flags.get_string('target') or {
 		panic('')
 	}
 	url := cmd.flags.get_string('url') or {
@@ -72,7 +72,8 @@ fn send(cmd cli.Command) {
 	}
 	match notifier {
 		'discord' { target.discord(url, title, message, username) }
-		else { println('The notifier $notifier is currently not supported') }
+		'teams' { target.teams(url, title, message) }
+		else { println('The target $notifier is currently not supported') }
 	}
 	exit(0)
 }
