@@ -28,7 +28,7 @@ fn main() {
 	})
 	send_cli.add_flag(cli.Flag{
 		flag: .string
-		required: true
+		value: ''
 		name: 'message'
 		description: 'The message that should be posted'
 	})
@@ -46,9 +46,15 @@ fn main() {
 	})
 	send_cli.add_flag(cli.Flag{
 		flag: .string
-		value: 'discord'
+		value: 'generic'
 		name: 'target'
-		description: 'The type of target (defaults to "discord")'
+		description: 'The type of target (defaults to "generic")'
+	})
+	send_cli.add_flag(cli.Flag{
+		flag: .string
+		value: ''
+		name: 'data'
+		description: 'String containing escaped JSON data to be used for the "generic" target'
 	})
 	cmd.add_command(send_cli)
 	cmd.parse(os.args)
@@ -70,7 +76,11 @@ fn send(cmd cli.Command) {
 	url := cmd.flags.get_string('url') or {
 		panic('')
 	}
+	data := cmd.flags.get_string('data') or {
+		panic('')
+	}
 	match notifier {
+		'generic' { target.generic(url, data) }
 		'discord' { target.discord(url, title, message, username) }
 		'teams' { target.teams(url, title, message) }
 		else { println('The target $notifier is currently not supported') }

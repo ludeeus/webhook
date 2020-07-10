@@ -2,7 +2,11 @@ module target
 
 import net.http
 
-pub fn discord(url, title, message, username string) {
+pub fn discord(url string, title string, message string, username string) {
+	if message == "" {
+		println("The target 'discord' require '--message'")
+		exit(1)
+	}
 	mut data := ''
 	if title != '' {
 		data = '{"username": "$username", "embeds": [{"title": "$title", "description": "$message"}]}'

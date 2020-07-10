@@ -35,8 +35,11 @@ Commands:
 
 ## Supported targets
 
-- Discord (default)
+- Generic (default)
+- Discord
 - Microsoft Teams
+
+_Note: if using the generic target you need to provide the data as an escaped JSON string with the `--data` flag_
 
 ## Docker
 
@@ -52,7 +55,7 @@ docker run ludeeus/webhook
 Full example:
 
 ```bash
-docker run ludeeus/webhook send --url "https://discordapp.com/api/webhooks/xxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx" --message "Test message with webhook notifier" --title "Powered by V"
+docker run ludeeus/webhook send --target discord --url "https://discordapp.com/api/webhooks/xxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx" --message "Test message with webhook notifier" --title "Powered by V"
 ```
 
 ## License

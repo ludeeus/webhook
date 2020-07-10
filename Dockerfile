@@ -17,7 +17,10 @@ FROM scratch
 USER 1337
 
 # Copy needed files from BobTheBuilder
+## It needs musl to run
 COPY --from=BobTheBuilder /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
+
+## These 2 are for openssl, if that is not needed remove them to make the image even smaler
 COPY --from=BobTheBuilder /lib/libcrypto.so.1.1 /lib/libcrypto.so.1.1
 COPY --from=BobTheBuilder /lib/libssl.so.1.1 /lib/libssl.so.1.1
 

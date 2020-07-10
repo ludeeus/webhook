@@ -4,6 +4,10 @@ import net.http
 
 
 pub fn teams(url string, title string, message string){
+	if message == "" {
+		println("The target 'teams' require '--message'")
+		exit(1)
+	}
 	mut data := ""
 	if title != "" {
 		data = '{"@type": "MessageCard", "title": "${title}", "text": "${message}"}'
