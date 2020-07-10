@@ -1,3 +1,5 @@
+#### Stage 1
+
 # Use the vlang container as a builder
 FROM thevlang/vlang:alpine as BobTheBuilder
 
@@ -7,22 +9,26 @@ COPY . /build
 # Set the working directory
 WORKDIR /build
 
+# Install build tools
+RUN \
+  apk add --no-cache \
+    clang-dev \
+    llvm9-dev \
+    openssl-libs-static \
+    upx
+
 # Build the binary
-RUN v -prod . -o binary
+RUN v -cflags '-static' -cc clang -prod -compress . -o binary
+
+
+
+#### Stage 2
 
 # Create a new image from scratch
 FROM scratch
 
 # Set a user PID to keep it from running as root
 USER 1337
-
-# Copy needed files from BobTheBuilder
-## It needs musl to run
-COPY --from=BobTheBuilder /lib/ld-musl-x86_64.so.1 /lib/ld-musl-x86_64.so.1
-
-## These 2 are for openssl, if that is not needed remove them to make the image even smaler
-COPY --from=BobTheBuilder /lib/libcrypto.so.1.1 /lib/libcrypto.so.1.1
-COPY --from=BobTheBuilder /lib/libssl.so.1.1 /lib/libssl.so.1.1
 
 # Copy the binary
 COPY --from=BobTheBuilder /build/binary /bin/binary
